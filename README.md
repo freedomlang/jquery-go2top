@@ -1,5 +1,3 @@
-
-
 #### Easy Peasy
 Download the minified version of the plugin, include it after jQuery and:
 ```
