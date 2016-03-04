@@ -37,7 +37,7 @@ $(document).ready(function(){
 * Initial Release
 
 ### License and Copyright
-jQuery GoUp! is dual licensed under the [GPL](http://www.gnu.org/licenses/gpl.html) and [MIT](http://www.opensource.org/licenses/mit-license.php) licenses.
+jQuery Go2top! is dual licensed under the [GPL](http://www.gnu.org/licenses/gpl.html) and [MIT](http://www.opensource.org/licenses/mit-license.php) licenses.
 
 (c) 2016 freedomlang
 
