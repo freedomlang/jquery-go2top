@@ -27,6 +27,10 @@ $(document).ready(function(){
 | `hideUnderWidth`  | The threshold of window width under which the button is permanently hidden                     | Integer | 500            |
 
 ### Changelog
+#### v0.2.0 (03-08-2016)
+* change the method to define style
+* delete some options
+* Add some options
 #### v0.1.0 (03-04-2016)
 * Initial Release
 
