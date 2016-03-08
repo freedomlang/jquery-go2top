@@ -18,7 +18,8 @@ $(document).ready(function(){
 | `containerSize` 	| The width and height of the button (minimum is 20)                                     		 | Integer | 40             |
 | `containerRadius` | Let you transform a square in a circle (yeah, it's magic!)                                     | Integer | 10             |
 | `containerClass`  | The class name given to the button container                                                   | String  | goup-container |
-| `containerColor`  | The color of the container (in hex format)                                                   	 | String  | #000 			|
+| `bcolor`  | The color of the image before you put your mouse on it (in hex format)                                                   	 | String  | #000 			|
+| `acolor`  | The color of the image when you put your mouse on it (in hex format)                                                   	 | String  | #000 			|
 | `trigger`         | After how many scrolled down pixels the button must be shown (bypassed by `alwaysVisible`)     | Integer | 500            |
 | `entryAnimation`  | The animation of the show and hide events of the button ("slide" or "fade")				     | String  | fade           |
 | `alwaysVisible`   | Set to true if u want the button to be always visible (bypass `trigger`)                       | Boolean | false          |
