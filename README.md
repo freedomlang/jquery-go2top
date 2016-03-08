@@ -31,6 +31,7 @@ $(document).ready(function(){
 * change the method to define style
 * delete some options
 * Add some options
+
 #### v0.1.0 (03-04-2016)
 * Initial Release
 
