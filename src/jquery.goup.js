@@ -1,35 +1,35 @@
 /*
  *
- * Copyright (c) 2014 Daniele Lenares (https://github.com/Ryuk87)
+ * Copyright (c) 2016 freedomlang (https://github.com/freedomlang)
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php)
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
  * 
- * Version 1.0.0
+ * Version 0.2.5
  *
  */
 (function(e) {
-    function t(e, t, n) {
-        if (t == "show") {
-            switch (n) {
+    function InOrOut(element, visible, effect) {
+        if (visible == "show") {
+            switch (effect) {
             case "fade":
-                e.fadeIn();
+                element.fadeIn();
                 break;
             case "slide":
-                e.slideDown();
+                element.slideDown();
                 break;
             default:
-                e.fadeIn()
+                element.fadeIn()
             }
         } else {
-            switch (n) {
+            switch (effect) {
             case "fade":
-                e.fadeOut();
+                element.fadeOut();
                 break;
             case "slide":
-                e.slideUp();
+                element.slideUp();
                 break;
             default:
-                e.fadeOut()
+                element.fadeOut()
             }
         }
     }
@@ -59,6 +59,7 @@
             styleSheet.insertRule(selector + '{' + propStr + '}', styleSheet.cssRules.length);
         }
     }
+    // Options
     e.goup = function(n) {
         var r = e.extend({
             location: "right",
@@ -67,18 +68,18 @@
             containerSize: 40,
             containerRadius: 10,
             containerClass: "goup-container",
-            alwaysVisible: false,
             trigger: 250,
             entryAnimation: "fade",
             goupSpeed: "slow",
             hideUnderWidth: 500,
             second: 0.3,
             bcolor: "#eee",
-            acolor: "#bbb",
-            img: "http://freedomlang.com/usr/themes/default/img/arrow_up.svg"
+            acolor: "#bbb"
         }, n);
+        // Add plugin to the body
         e("body").append('<svg class="' + r.containerClass + '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="36.1 192 576 372" enable-background="new 36.1 192 576 372" xml:space="preserve"><g><g transform="translate(1.000000, 2.000000)"><path d="M563,406c-7.2,0-14.5-1.6-21.5-5.1L323.1,291.7L104.5,400.9c-23.8,11.9-52.5,2.2-64.4-21.5    c-11.9-23.7-2.2-52.5,21.5-64.4l240-120c13.5-6.8,29.4-6.8,42.9,0l240,120c23.7,11.8,33.3,40.7,21.5,64.4    C597.6,396.3,580.6,406,563,406L563,406z"></path><path d="M563,562c-3.6,0-7.2-0.8-10.7-2.5L323.1,444.8L93.8,559.5c-11.8,5.9-26.3,1.1-32.2-10.7    c-5.9-11.8-1.1-26.2,10.8-32.2l240-120c6.8-3.4,14.7-3.4,21.5,0l240,120c11.9,5.9,16.7,20.3,10.8,32.2    C580.3,557.1,571.8,562,563,562L563,562z"></path></g></g></svg>');
         var i = e("." + r.containerClass);
+        // Check all the options
         if (r.location != "right" && r.location != "left") {
             r.location = "right"
         }
@@ -100,6 +101,7 @@
         if (r.hideUnderWidth < 0) {
             r.hideUnderWidth = 0
         }
+        // Prepare the rules to insert
         var rs = [];
         rs[0]=[];
         rs[0][0]="." + r.containerClass;
@@ -148,11 +150,12 @@
         rs[1][1][0]="fill";
         rs[1][1][1]=r.acolor;
         addStylesheetRules(rs);
+        // If the window's width is less than the value you set, the plugin will be disappear!
         var h = false;
         e(window).resize(function() {
             if (e(window).outerWidth() <= r.hideUnderWidth) {
                 h = true;
-                t(e(i), "hide", r.entryAnimation);
+                InOrOut(e(i), "hide", r.entryAnimation);
             } else {
                 h = false;
                 e(window).trigger("scroll")
@@ -162,20 +165,8 @@
             h = true;
             e(i).hide();
         }
-        if (!r.alwaysVisible) {
-            e(window).scroll(function() {
-                if (e(window).scrollTop() >= r.trigger && !h) {
-                    t(e(i), "show", r.entryAnimation);
-                }
-                if (e(window).scrollTop() < r.trigger && !h) {
-                    t(e(i), "hide", r.entryAnimation);
-                }
-            })
-        } else {
-            t(e(i), "show", r.entryAnimation);
-        }
         if (e(window).scrollTop() >= r.trigger && !h) {
-            t(e(i), "show", r.entryAnimation);
+            InOrOut(e(i), "show", r.entryAnimation);
         }
         var p = true;
         e(i).add().on("click", function() {
