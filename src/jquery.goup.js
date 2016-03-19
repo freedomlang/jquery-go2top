@@ -161,13 +161,14 @@
                 e(window).trigger("scroll")
             }
         });
-        if (e(window).outerWidth() <= r.hideUnderWidth) {
-            h = true;
-            e(i).hide();
-        }
-        if (e(window).scrollTop() >= r.trigger && !h) {
-            InOrOut(e(i), "show", r.entryAnimation);
-        }
+        e(window).scroll(function() {
+            if (e(window).scrollTop() >= r.trigger && !h) {
+                InOrOut(e(i), "show", r.entryAnimation);
+            }
+            if (e(window).scrollTop() < r.trigger && !h) {
+                InOrOut(e(i), "hide", r.entryAnimation);
+            }
+            })
         var p = true;
         e(i).add().on("click", function() {
             if (p) {
